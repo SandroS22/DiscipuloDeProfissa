@@ -1,7 +1,7 @@
 from Model.pessoa import Pessoa
 
 
-class Aluno(Pessoa):
+class Universitario(Pessoa):
     def __init__(self, nome, cod, curso):
         super().__init__(nome, cod)
         self.__curso = curso
