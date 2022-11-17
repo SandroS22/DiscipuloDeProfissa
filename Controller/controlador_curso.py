@@ -20,3 +20,7 @@ class ControladorCurso:
                 break
         else:
             self.__cursos.append(novo_curso)
+
+    def listar_cursos(self):
+        for i in self.__cursos:
+            self.__tela_curso.mostra_curso(i.nome, i.id_curso)
