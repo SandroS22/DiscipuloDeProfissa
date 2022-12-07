@@ -1,19 +1,26 @@
-from View.abstract_tela import AbstractTela
+from tela import Tela
+import PySimpleGUI as sg
 
 
-class TelaCurso(AbstractTela):
+class TelaCurso:
+    def __init__(self):
+        self.__tela = Tela()
+
+    @property
+    def tela(self):
+        return self.__tela
+
     def pega_dados(self):
-        print(10 * '-', 'Insira os dados do curso', 10 * '-')
-        nome = input('Nome: ')
-        while True:
-            try:
-                id_curso = int(input('ID do curso: '))
-                return {'nome': nome, 'id_curso': id_curso}
-            except ValueError:
-                print('Valor inválido!')
+        layout = [
 
-    def mostra_curso(self, nome, id_curso):
-        print(20 * '-')
-        print('|', 'Nome: ', nome)
-        print('| ', 'ID: ', id_curso)
-        print(20 * '-')
+            [sg.Text('Insira as informações')],
+            [sg.Button('Voltar', key=0)]
+
+                 ]
+        self.__tela.window = sg.Window('Teste').Layout(layout)
+        op = (self.__tela.open())
+        self.__tela.close()
+
+
+t = TelaCurso()
+t.pega_dados()
