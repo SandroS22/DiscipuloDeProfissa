@@ -16,7 +16,7 @@ class ControladorCurso:
         novo_curso = Curso(dados_curso['nome'], dados_curso['id_curso'])
         for curso in self.__cursos:
             if novo_curso.id_curso == curso.id_curso or novo_curso.nome == curso.nome:
-                self.__tela_curso.mostra_msg('Este curso já existe!')
+                self.__tela_curso.mostra_msg('Esse curso já existe!')
                 break
         else:
             self.__cursos.append(novo_curso)
@@ -24,3 +24,5 @@ class ControladorCurso:
     def listar_cursos(self):
         for i in self.__cursos:
             self.__tela_curso.mostra_curso(i.nome, i.id_curso)
+
+    def excluir_curso(self):
