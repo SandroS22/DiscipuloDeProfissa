@@ -1,24 +1,35 @@
-from tela import Tela
 import PySimpleGUI as sg
 
 
 class TelaCurso:
     def __init__(self):
-        self.__tela = Tela()
+        self.__window = None
+        self.__layout = None
 
-    @property
-    def tela(self):
-        return self.__tela
+    def close(self):
+        self.__window.Close()
+
+    def open(self):
+        button, values = self.__window.Read()
+        if button is not None:
+            return self.__layout.index(button), values
+        else:
+            return ['', values]
+
+    def mostra_mensagem(self, titulo, msg):
+        sg.popup(titulo, msg)
 
     def pega_dados(self):
         layout = [
 
             [sg.Text('Insira as informações')],
+            [sg.Text('Nome', size=5), sg.InputText(key='it_nome')],
+            [sg.Text('Código', size=5), sg.InputText(key='it_codigo')],
             [sg.Button('Voltar', key=0)]
 
                  ]
-        self.__tela.window = sg.Window('Teste').Layout(layout)
-        op = (self.__tela.open())
+        self.__window = sg.Window('Dados Curso').Layout(layout)
+        op = (self.open())
         self.__tela.close()
 
 
