@@ -11,10 +11,7 @@ class TelaCurso:
 
     def open(self):
         button, values = self.__window.Read()
-        if button is not None:
-            return self.__layout.index(button), values
-        else:
-            return ['', values]
+        return button, values
 
     def mostra_mensagem(self, titulo, msg):
         sg.popup(titulo, msg)
@@ -25,13 +22,9 @@ class TelaCurso:
             [sg.Text('Insira as informações')],
             [sg.Text('Nome', size=5), sg.InputText(key='it_nome')],
             [sg.Text('Código', size=5), sg.InputText(key='it_codigo')],
-            [sg.Button('Voltar', key=0)]
+            [sg.Button('Voltar', key=0), sg.Button('Confirmar', key=1)]
 
                  ]
         self.__window = sg.Window('Dados Curso').Layout(layout)
-        op = (self.open())
-        self.__tela.close()
-
-
-t = TelaCurso()
-t.pega_dados()
+        inf = (self.open())
+        self.__window.close()
