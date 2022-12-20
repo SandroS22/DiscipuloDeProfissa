@@ -7,13 +7,21 @@ class ControladorCurso:
         self.__tela_curso = TelaCurso()
         self.__cursos = []
 
+    def menu_curso(self):
+        while True:
+            escolha = self.__tela_curso.menu_curso()
+            if escolha is None or escolha == 0:
+                break
+            elif escolha == 1:
+                self.novo_curso()
+
     @property
     def cursos(self):
         return self.__cursos
 
     def novo_curso(self):
         dados_curso = self.__tela_curso.pega_dados()
-        novo_curso = Curso(dados_curso['nome'], dados_curso['id_curso'])
+        novo_curso = Curso(dados_curso[0]['nome'], dados_curso[0]['id_curso'])
         for curso in self.__cursos:
             if novo_curso.id_curso == curso.id_curso or novo_curso.nome == curso.nome:
                 self.__tela_curso.mostra_msg('Esse curso já existe!')

@@ -20,7 +20,7 @@ class TelaSistema:
             [sg.Button('Cursos', key=1),
              sg.Button('Profissionais', key=2),
              sg.Button('Universitários', key=3)],
-            [sg.Button('Voltar', key=0)]
+            [sg.Button('Sair', key=0)]
 
                  ]
         self.__window = sg.Window('Menu Principal').layout(layout)

@@ -1,6 +1,5 @@
-from Controller.controlador_curso import ControladorCurso
+from Controller.sistema import Sistema
 
-c = ControladorCurso()
-c.novo_curso()
-c.novo_curso()
-c.listar_cursos()
+
+if __name__ == '__main__':
+    Sistema().iniciar()

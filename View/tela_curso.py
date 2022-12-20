@@ -26,5 +26,23 @@ class TelaCurso:
 
                  ]
         self.__window = sg.Window('Dados Curso').Layout(layout)
-        inf = (self.open())
+        novos_dados = (self.open())
         self.__window.close()
+        return novos_dados
+
+    def menu_curso(self):
+        layout = [
+
+            [sg.Text('Menu curso', font=('Times New Roman', 20))],
+            [sg.Button('Novo', key=1, font=('Times New Roman', 15)),
+             sg.Button('Alterar', key=2, font=('Times New Roman', 15)),
+             sg.Button('Excluir', key=3, font=('Times New Roman', 15)),
+             sg.Button('Listar', key=4, font=('Times New Roman', 15))],
+            [sg.Button('Voltar', key=0, font=('Times New Roman', 10))]
+
+                 ]
+        self.__window = sg.Window('Menu').layout(layout)
+        escolha = (self.open())
+        self.__window.close()
+        return escolha[0]
+
