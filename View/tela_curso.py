@@ -4,7 +4,6 @@ import PySimpleGUI as sg
 class TelaCurso:
     def __init__(self):
         self.__window = None
-        self.__layout = None
 
     def close(self):
         self.__window.Close()
@@ -26,9 +25,16 @@ class TelaCurso:
 
                  ]
         self.__window = sg.Window('Dados Curso').Layout(layout)
-        novos_dados = (self.open())
+        try:
+            novos_dados = (self.open())
+            if novos_dados[0] == 0:
+                self.close()
+                return None
+            novos_dados[1]['it_codigo'] = int(novos_dados[1]['it_codigo'])
+            return novos_dados
+        except ValueError:
+            self.mostra_mensagem('Código inválido!', 'Somente números inteiros são aceitos')
         self.__window.close()
-        return novos_dados
 
     def menu_curso(self):
         layout = [
@@ -45,4 +51,3 @@ class TelaCurso:
         escolha = (self.open())
         self.__window.close()
         return escolha[0]
-

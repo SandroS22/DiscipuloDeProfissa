@@ -12,14 +12,19 @@ class Profissional(Pessoa):
         super().__init__(nome, cod)
         self.__cursou = cursou
         self.__nivel = nivel
+        self.__discipulos = []
 
     @property
     def cursou(self):
-        return sel.__cursou
+        return self.__cursou
 
     @property
     def nivel(self):
         return self.__nivel
+
+    @property
+    def discipulos(self):
+        return self.__discipulos
 
     @cursou.setter
     def cursou(self, curso):
@@ -27,4 +32,4 @@ class Profissional(Pessoa):
 
     @nivel.setter
     def nivel(self, nivel: Nivel):
-        sel.__nivel = nivel
+        self.__nivel = nivel

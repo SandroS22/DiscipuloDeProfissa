@@ -21,11 +21,13 @@ class ControladorCurso:
 
     def novo_curso(self):
         dados_curso = self.__tela_curso.pega_dados()
-        novo_curso = Curso(dados_curso[0]['nome'], dados_curso[0]['id_curso'])
+        if dados_curso is None:
+            return
+        novo_curso = Curso(dados_curso[1]['it_nome'], dados_curso[1]['it_codigo'])
         for curso in self.__cursos:
             if novo_curso.id_curso == curso.id_curso or novo_curso.nome == curso.nome:
-                self.__tela_curso.mostra_msg('Esse curso já existe!')
-                break
+                self.__tela_curso.mostra_mensagem('Esse curso já existe!')
+                return
         else:
             self.__cursos.append(novo_curso)
 
